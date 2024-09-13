@@ -8,7 +8,7 @@ interface MemeCardProps {
 
 export const MemeCard: React.FC<MemeCardProps> = ({ name, url }) => {
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden">
+    <div className="bg-white shadow-md rounded-lg overflow-hidden border border-black p-2">
       <img
         src={url}
         alt={name}
