@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import React, { useState } from 'react'
 
 import { Home } from '../pages'
+import { LANG } from '../utils'
 import { LANGKeyType } from '../types/langType'
 
 export const AppRoute = () => {
@@ -22,7 +23,7 @@ export const AppRoute = () => {
             <Route path="/about" element={<About />} />
           </Route>
           <Route path="/login" element={<Login />} />
-          <Route path="/team" element={<Team lang={lang} />} /> 
+          <Route path="/team" element={<Team lang={lang}  langData={LANG}/>} /> 
         </Routes>
       </div>
     </BrowserRouter>

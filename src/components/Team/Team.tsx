@@ -1,16 +1,16 @@
-import { LANG } from '../../utils';
-import { LANGKeyType } from '../../types/langType';
+import { LANGKeyType, LanguageData } from '../../types/langType';
+
 import React from 'react';
 
 interface TeamProps {
   lang: LANGKeyType; 
+  langData: { [key in LANGKeyType]: LanguageData }; 
 }
 
-export const Team: React.FC<TeamProps> = ({ lang }) => {
+export const Team: React.FC<TeamProps> = ({ lang, langData }) => {
   console.log(lang);
 
-  
-  const { title, desc, title2, title3 } = LANG[lang];
+  const { title, desc, title2, title3 } = langData[lang]; 
 
   return (
     <div className='p-4'>
