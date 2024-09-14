@@ -4,7 +4,7 @@ import { AccordionItem } from '../AccordionItem';
 import { accordionData } from '../../data/accordion';
 
 export const Accordion = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   const toggleAccordion = (index: number) => {
     if (index === activeIndex) {
@@ -23,7 +23,7 @@ export const Accordion = () => {
           index={index}
           title={item.title}
           content={item.content}
-          isActive={activeIndex === index}
+          isActive={index === activeIndex ? true : false} // Check if the current index is active
           toggleAccordion={toggleAccordion}
         />
       ))}
