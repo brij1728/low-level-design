@@ -1,3 +1,5 @@
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+
 import { ISingleAccordion } from '../../types/accordionType';
 import React from 'react';
 
@@ -9,13 +11,15 @@ interface IProps extends ISingleAccordion {
 
 export const AccordionItem: React.FC<IProps> = ({ title, content, isActive, index, toggleAccordion }) => {
   return (
-    <div className="border-b-2 border-gray-200 gap-2 p-2 mt-4">
+    <div className=" gap-2 mt-4 ">
       <div 
-        className="flex justify-between items-center cursor-pointer" 
+        className="flex justify-between items-center cursor-pointer bg-slate-200 p-2" 
         onClick={() => toggleAccordion(index)}
       >
         <h1 className="text-xl font-semibold">{title}</h1>
-        <span>{isActive ? '-' : '+'}</span>
+        <span>
+          {isActive ? <FiChevronUp size={24} /> : <FiChevronDown size={24} />}
+        </span>
       </div>
       {isActive && <p className="text-gray-500 mt-2">{content}</p>}
     </div>

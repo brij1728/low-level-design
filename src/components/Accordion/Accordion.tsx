@@ -15,7 +15,7 @@ export const Accordion = () => {
   };
 
   return (
-    <div className='p-4 gap-4'>
+    <div className='m-auto mt-5 p-4 gap-4'>
 		<h1 className='text-2xl font-bold'>Israel-Palestine conflict</h1>
       {accordionData.map((item, index) => (
         <AccordionItem
