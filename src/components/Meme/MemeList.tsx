@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { MemeCard } from '../MemeCard';
-import { MemeCardShimmer } from '../MemeCardShimmer';
+import { MemeCard } from './MemeCard';
+import { MemeCardShimmer } from './MemeCardShimmer';
 import axios from 'axios';
 
 interface Meme {

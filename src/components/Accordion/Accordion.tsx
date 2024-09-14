@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { AccordionItem } from '../AccordionItem';
+import { AccordionItem } from './AccordionItem';
 import { accordionData } from '../../data/accordion';
 
 export const Accordion = () => {

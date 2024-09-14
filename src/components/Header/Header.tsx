@@ -17,6 +17,7 @@ export const Header: React.FC<IProps> = ({lang, handleLanguageChange}) => {
             <Link to="/language">Language</Link>
             <Link to="/login">Login</Link>
             <Link to="/accordion">Accordion</Link>
+            <Link to="/comments">Comments</Link>
           </nav>
           <div className='px-8'>
           <select value={lang} onChange={handleLanguageChange} >
