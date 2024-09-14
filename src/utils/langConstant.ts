@@ -3,7 +3,7 @@ import { LANGType } from "../types/langType";
 // create constant for language
 export const LANG: LANGType = {
 	en: {
-		title: 'Team',
+		title: 'Language',
 		desc: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a',
 		title2: 'Mission',
 		title3: 'Vision',

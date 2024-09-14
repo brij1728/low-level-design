@@ -2,12 +2,12 @@ import { LANGKeyType, LanguageData } from '../../types/langType';
 
 import React from 'react';
 
-interface TeamProps {
+interface LanguageProps {
   lang: LANGKeyType; 
   langData: { [key in LANGKeyType]: LanguageData }; 
 }
 
-export const Team: React.FC<TeamProps> = ({ lang, langData }) => {
+export const Language: React.FC<LanguageProps> = ({ lang, langData }) => {
   console.log(lang);
 
   const { title, desc, title2, title3 } = langData[lang]; 

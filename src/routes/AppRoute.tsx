@@ -1,4 +1,4 @@
-import { About, Header, Login, ProtectedRoute, Team } from '../components'
+import { About, Accordion, Header, Language, Login, ProtectedRoute } from '../components'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import React, { useState } from 'react'
 
@@ -23,7 +23,8 @@ export const AppRoute = () => {
             <Route path="/about" element={<About />} />
           </Route>
           <Route path="/login" element={<Login />} />
-          <Route path="/team" element={<Team lang={lang}  langData={LANG}/>} /> 
+          <Route path="/language" element={<Language lang={lang}  langData={LANG}/>} /> 
+          <Route path="/accordion" element={<Accordion />} />
         </Routes>
       </div>
     </BrowserRouter>
