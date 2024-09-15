@@ -15,26 +15,32 @@ export const ImageSlider = () => {
   };
 
   useEffect(() => {
-	const interval = setInterval(() => {
-	  loadNextImage();
-	}, 3000);
+    const interval = setInterval(() => {
+      loadNextImage();
+    }, 3000);
 
-	return () => clearInterval(interval);
+    return () => clearInterval(interval);
   }, [active]);
 
   return (
-    <div className='p-4 flex items-center justify-center'>
+    <div className='relative w-full md:w-[500px] h-[500px] flex items-center justify-center mx-4'>
       {/* Left arrow button */}
-      <div onClick={loadPrevImage} className='cursor-pointer'>
-        <RiArrowLeftWideLine size={50} strokeWidth={1} />
+      <div 
+        onClick={loadPrevImage} 
+        className='absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer bg-gray-800 p-2 rounded-full'
+      >
+        <RiArrowLeftWideLine size={40} color="white" />
       </div>
 
       {/* Image */}
-      <img src={imageLinks[active]} alt="slide" className='w-[500px] h-[500px] mx-4' />
+      <img src={imageLinks[active]} alt="slide" className='w-full h-full object-cover' />
 
       {/* Right arrow button */}
-      <div onClick={loadNextImage} className='cursor-pointer'>
-        <RiArrowRightWideLine size={50} strokeWidth={1} />
+      <div 
+        onClick={loadNextImage} 
+        className='absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer bg-gray-800 p-2 rounded-full'
+      >
+        <RiArrowRightWideLine size={40} color="white" />
       </div>
     </div>
   );
