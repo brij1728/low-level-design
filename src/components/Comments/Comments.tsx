@@ -1,10 +1,14 @@
-import React from 'react'
+import { Comment } from '../../types/commentType';
+import { CommentBox } from './CommentBox';
+import React from 'react';
+import { commentsData } from '../../data/comment'; // Assuming `commentsData` is an array of comments
 
-export const Comments = () => {
+export const Comments: React.FC = () => {
   return (
-	<div>
-		<h1>Comments</h1>
-		<p>Comments will be here</p>
-	</div>
-  )
-}
+    <div className='p-4'>
+      {commentsData.map((comment: Comment) => (
+        <CommentBox key={comment.id} comment={comment} />
+      ))}
+    </div>
+  );
+};
