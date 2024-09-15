@@ -18,6 +18,7 @@ export const Header: React.FC<IProps> = ({lang, handleLanguageChange}) => {
             <Link to="/login">Login</Link>
             <Link to="/accordion">Accordion</Link>
             <Link to="/comments">Comments</Link>
+            <Link to="/image-slider">Image Slider</Link>
           </nav>
           <div className='px-8'>
           <select value={lang} onChange={handleLanguageChange} >

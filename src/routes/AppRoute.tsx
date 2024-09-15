@@ -1,4 +1,4 @@
-import { About, Accordion, Comments, Header, Language, Login, ProtectedRoute } from '../components'
+import { About, Accordion, Comments, Header, ImageSlider, Language, Login, ProtectedRoute } from '../components'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import React, { useState } from 'react'
 
@@ -26,6 +26,7 @@ export const AppRoute = () => {
           <Route path="/language" element={<Language lang={lang}  langData={LANG}/>} /> 
           <Route path="/accordion" element={<Accordion />} />
           <Route path="/comments" element={<Comments />} />
+          <Route path="/image-slider" element={<ImageSlider />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -6,3 +6,4 @@ export * from './Header';
 export * from './Meme';
 export * from './Accordion';
 export * from './Comments';
+export * from './ImageSlider';
