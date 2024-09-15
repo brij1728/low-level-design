@@ -23,7 +23,7 @@ export const ImageSlider = () => {
   }, [active]);
 
   return (
-    <div className='relative w-full md:w-[500px] h-[500px] flex items-center justify-center mx-4'>
+    <div className='relative w-full md:w-[500px] h-[500px] flex items-center justify-center mx-4 m-4'>
       {/* Left arrow button */}
       <div 
         onClick={loadPrevImage} 
