@@ -58,6 +58,7 @@ export const Pagination = () => {
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
+		visiblePages={8} // Adjust the number of visible pages as needed
       />
     </div>
   );
