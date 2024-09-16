@@ -2,10 +2,9 @@ import React from 'react'
 
 export const VideoStream = () => {
   return (
-	<div className="m-5">
+    <div className="">
       <iframe
-        width="1200"
-        height="600"
+        className="w-full h-[300px] lg:h-[600px]"
         src="https://www.youtube.com/embed/4xDzrJKXOOY?si=GC4yRwBjKDaji8Jm"
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
