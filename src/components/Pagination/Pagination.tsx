@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { ProductCard } from './ProductCard';
-import { ProductCardShimmer } from './ProductCardShimmer';
+import { PaginationControls } from '../ui';
+import { ProductList } from './ProductList';
 
 interface Product {
   id: number;
@@ -42,72 +42,23 @@ export const Pagination = () => {
     }
   };
 
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
   };
 
   return (
     <div className="p-4">
       <h1 className="text-center text-2xl font-semibold mb-6">Pagination</h1>
 
-      {/* Show Shimmer UI while loading */}
-      {loading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-          <ProductCardShimmer limit={LIMIT} />
-        </div>
-      ) : (
-        // Responsive Grid for Product Cards
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-          {products.map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
-        </div>
-      )}
+      {/* Product List */}
+      <ProductList products={products} loading={loading} limit={LIMIT} />
 
       {/* Pagination Controls */}
-      {!loading && (
-        <div className="flex justify-center mt-6">
-          {currentPage > 1 && (
-            <button
-              onClick={handlePrevPage}
-              className={`p-2 mx-2 border rounded-lg text-blue-500`}
-            >
-              Prev
-            </button>
-          )}
-
-          {[...Array(totalPages).keys()].map((_, page) => (
-            <button
-              key={page}
-              onClick={() => setCurrentPage(page + 1)}
-              className={`p-2 mx-2 border rounded-lg ${
-                currentPage === page + 1
-                  ? 'font-bold text-white bg-blue-500'
-                  : 'text-blue-500'
-              }`}
-            >
-              {page + 1}
-            </button>
-          ))}
-
-          {currentPage < totalPages && (
-            <button
-              onClick={handleNextPage}
-              className="p-2 mx-2 border rounded-lg text-blue-500"
-            >
-              Next
-            </button>
-          )}
-        </div>
-      )}
+      <PaginationControls
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };

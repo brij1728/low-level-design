@@ -1,13 +1,5 @@
+import { Product } from '../../types/products';
 import React from 'react';
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  discountPercentage: number;
-  thumbnail: string;
-}
 
 export const ProductCard: React.FC<Product> = ({
   id,
