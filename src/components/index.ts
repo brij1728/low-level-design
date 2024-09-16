@@ -8,3 +8,4 @@ export * from './Accordion';
 export * from './Comments';
 export * from './ImageSlider';
 export * from './Pagination';
+export * from './LiveChat';
