@@ -4,6 +4,8 @@ import { generateRandomId, getRandomAvatar, getRandomMessage, getRandomName } fr
 import { ChatMessage } from './ChatMessage';
 import { ChatType } from '../../types/chatType';
 
+const CHAT_MESSAGES_LIMIT = 100;
+
 export const ChatWindow = () => {
   const [messages, setMessages] = useState<ChatType[]>([]);
   
@@ -17,8 +19,8 @@ export const ChatWindow = () => {
       },
     ];
     setMessages((messages) => {
-      const newMessaheList = [...data, ...messages];
-      console.log(newMessaheList);
+      let newMessaheList = [...data, ...messages];
+      newMessaheList = newMessaheList.slice(0, CHAT_MESSAGES_LIMIT);
       return newMessaheList;
     });
   };
