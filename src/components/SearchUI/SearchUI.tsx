@@ -4,10 +4,14 @@ export const SearchUI = () => {
   const [searchText, setSearchText] = useState('');
   const [searchResults, setSearchResults] = useState<string[]>([]);
   const [isResultsVisible, setIsResultsVisible] = useState(false);
+  const [cache, setCache] = useState<{ [key: string]: string[] }>({});
 
   // Fetch data when searchText changes with debounce
   const fetchData = async () => {
-    if (searchText.trim()) {
+    // If cache has the data, return the data from cache
+    if (cache[searchText]) {
+      setSearchResults(cache[searchText]);
+    } else {
       try {
         const response = await fetch(
           `https://www.google.com/complete/search?client=firefox&q=${searchText}`
@@ -15,19 +19,27 @@ export const SearchUI = () => {
         const data = await response.json();
         console.log(data);
         setSearchResults(data[1] || []); // Assuming search results are in data[1]
+
+        // Cache the results using a functional update to ensure consistency
+        setCache((prevCache) => ({
+          ...prevCache,
+          [searchText]: data[1] || [],
+        }));
       } catch (error) {
         console.error('Error fetching search data:', error);
       }
-    } else {
-      setSearchResults([]); // Clear results when the searchText is empty
     }
   };
 
   // Debounce API call on searchText change
   useEffect(() => {
     const handler = setTimeout(() => {
-      fetchData();
-    }, 500); 
+      if (searchText.trim()) {
+        fetchData();
+      } else {
+        setSearchResults([]); // Clear results when search text is empty
+      }
+    }, 500); // Debounce for 500ms
 
     return () => {
       clearTimeout(handler); // Clear timeout on unmount or before the next call
@@ -38,6 +50,12 @@ export const SearchUI = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
     setIsResultsVisible(true);
+  };
+
+  // Prevent the search results from disappearing when clicking on a result
+  const handleResultClick = (result: string) => {
+    setSearchText(result);
+    setIsResultsVisible(false); // Hide the results after selecting one
   };
 
   return (
@@ -58,7 +76,7 @@ export const SearchUI = () => {
             <li
               key={index}
               className='p-2 hover:bg-gray-200 cursor-pointer rounded-lg'
-              onClick={() => setSearchText(result)}
+              onMouseDown={() => handleResultClick(result)} // onMouseDown to prevent blur issue
             >
               {result}
             </li>
