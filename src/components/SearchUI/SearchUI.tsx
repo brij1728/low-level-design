@@ -1,5 +1,9 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 
+// const URL = 'https://www.google.com/complete/search?client=firefox&q=';
+// const URL = 'https://api.themoviedb.org/3/search/movie';
+const URL = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=';
+
 export const SearchUI = () => {
   const [searchText, setSearchText] = useState('');
   const [searchResults, setSearchResults] = useState<string[]>([]);
@@ -14,7 +18,7 @@ export const SearchUI = () => {
     } else {
       try {
         const response = await fetch(
-          `https://www.google.com/complete/search?client=firefox&q=${searchText}`
+          `${URL}${searchText}`
         );
         const data = await response.json();
         console.log(data);
@@ -59,36 +63,39 @@ export const SearchUI = () => {
   };
 
   return (
-    <div className='m-10 relative'>
-      <input
-        type='text'
-        placeholder='Search...'
-        className='p-2 w-96 border border-gray-300 rounded-lg'
-        value={searchText}
-        onChange={handleChange}
-        onFocus={() => setIsResultsVisible(true)}
-        onBlur={() => setTimeout(() => setIsResultsVisible(false), 100)} // Delay to allow clicking results
-      />
+    <div className="max-w-lg mx-auto my-10">
+      <h1 className="text-2xl font-bold pb-4 text-gray-800 text-center">Search for Wikipedia Articles</h1>
+      <div className="relative">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
+          value={searchText}
+          onChange={handleChange}
+          onFocus={() => setIsResultsVisible(true)}
+          onBlur={() => setTimeout(() => setIsResultsVisible(false), 100)} // Delay to allow clicking results
+        />
 
-      {isResultsVisible && searchResults.length > 0 && (
-        <ul className='absolute top-12 w-96 bg-white shadow-lg border border-gray-200'>
-          {searchResults.map((result, index) => (
-            <li
-              key={index}
-              className='p-2 hover:bg-gray-200 cursor-pointer rounded-lg'
-              onMouseDown={() => handleResultClick(result)} // onMouseDown to prevent blur issue
-            >
-              {result}
-            </li>
-          ))}
-        </ul>
-      )}
+        {isResultsVisible && searchResults.length > 0 && (
+          <ul className="absolute top-full mt-2 w-full bg-white shadow-lg border border-gray-200 z-10 max-h-64 overflow-y-auto rounded-lg">
+            {searchResults.map((result, index) => (
+              <li
+                key={index}
+                className="p-2 hover:bg-gray-100 cursor-pointer"
+                onMouseDown={() => handleResultClick(result)} // onMouseDown to prevent blur issue
+              >
+                {result}
+              </li>
+            ))}
+          </ul>
+        )}
 
-      {isResultsVisible && searchResults.length === 0 && searchText && (
-        <ul className='absolute top-12 w-96 bg-white shadow-lg border border-gray-200'>
-          <li className='p-2 text-gray-500'>No results found</li>
-        </ul>
-      )}
+        {isResultsVisible && searchResults.length === 0 && searchText && (
+          <ul className="absolute top-full mt-2 w-full bg-white shadow-lg border border-gray-200 z-10 rounded-lg">
+            <li className="p-2 text-gray-500">No results found</li>
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
