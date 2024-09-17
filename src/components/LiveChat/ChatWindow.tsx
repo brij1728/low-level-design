@@ -18,6 +18,7 @@ export const ChatWindow = () => {
     ];
     setMessages((messages) => {
       const newMessaheList = [...data, ...messages];
+      console.log(newMessaheList);
       return newMessaheList;
     });
   };
