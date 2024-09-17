@@ -9,3 +9,4 @@ export * from './Comments';
 export * from './ImageSlider';
 export * from './Pagination';
 export * from './LiveChat';
+export * from './SearchUI';

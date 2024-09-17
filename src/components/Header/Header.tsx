@@ -48,6 +48,7 @@ export const Header: React.FC<IProps> = ({ lang, handleLanguageChange }) => {
           <Link to="/image-slider" className="text-white hover:text-gray-300">Image Slider</Link>
           <Link to="/pagination" className="text-white hover:text-gray-300">Pagination</Link>
           <Link to="/live-chat" className="text-white hover:text-gray-300">Live Chat</Link>
+          <Link to="/search-ui" className="text-white hover:text-gray-300">Search UI</Link>
         </nav>
 
         {/* Language Selector (Dropdown aligned to the right) */}
@@ -94,6 +95,9 @@ export const Header: React.FC<IProps> = ({ lang, handleLanguageChange }) => {
           </li>
           <li>
             <Link to="/live-chat" className="block py-2 text-white">Live Chat</Link>
+          </li>
+          <li>
+            <Link to="/search-ui" className="block py-2 text-white">Search UI</Link>
           </li>
 
           {/* Language Selector in mobile view */}

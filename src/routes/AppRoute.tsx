@@ -1,4 +1,4 @@
-import { About, Accordion, Comments, Header, ImageSlider, Language, LiveChat, Login, Pagination, ProtectedRoute } from '../components'
+import { About, Accordion, Comments, Header, ImageSlider, Language, LiveChat, Login, Pagination, ProtectedRoute, SearchUI } from '../components'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import React, { useState } from 'react'
 
@@ -29,6 +29,7 @@ export const AppRoute = () => {
           <Route path="/image-slider" element={<ImageSlider />} />
           <Route path="/pagination" element={<Pagination />} />
           <Route path="live-chat" element={<LiveChat/>} />
+          <Route path="search-ui" element={<SearchUI/>} />
         </Routes>
       </div>
     </BrowserRouter>
