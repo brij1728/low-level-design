@@ -8,7 +8,8 @@ export const ChatMessage: React.FC<ChatType> = ({
   message,
 }) => {
   return (
-    <div className="flex items-center space-x-4 p-2" key={id}>
+    <div className="flex items-start space-x-3 p-2" key={id}>
+      {/* Avatar */}
       <img
         className="w-8 h-8 rounded-full object-cover"
         src={userAvatar}
@@ -18,9 +19,16 @@ export const ChatMessage: React.FC<ChatType> = ({
           (e.target as HTMLImageElement).src = 'https://via.placeholder.com/32';
         }}
       />
-      <div className="flex gap-3 justify-center items-center">
-        <span className="font-semibold">{name}</span>
-        <span className="text-sm text-gray-500">{message}</span>
+
+      {/* Name and Message */}
+      <div className="flex-1">
+        {/* Name on the first line */}
+        <span className="font-semibold text-sm">{name} </span>
+
+        {/* Message - wrapped properly below the name */}
+        <span className="text-sm text-gray-800 break-words leading-normal">
+          {message}
+        </span>
       </div>
     </div>
   );
