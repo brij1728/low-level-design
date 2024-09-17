@@ -4,6 +4,8 @@ export const SearchUI = () => {
   const [searchText, setSearchText] = useState('');
   const [searchResults, setSearchResults] = useState<string[]>([]);
   const [debouncedText, setDebouncedText] = useState(searchText);
+  const [isResultsVisible, setIsResultsVisible] = useState(false);
+  
 
   // Debounce function to delay API calls when typing
   useEffect(() => {
@@ -47,9 +49,11 @@ export const SearchUI = () => {
         className='p-2 w-96 border border-gray-300 rounded-lg'
         value={searchText}
         onChange={handleChange}
+		onFocus={() => setIsResultsVisible(true)}
+		onBlur={() => setIsResultsVisible(false)}
       />
       <ul className='flex flex-col border border-black'>
-        {searchResults.length > 0 ? (
+        {searchResults.length > 1 && isResultsVisible  ? (
           searchResults.map((result, index) => (
             <li key={index} className='p-2 border border-gray-300 rounded-lg m-2'>
               {result}
