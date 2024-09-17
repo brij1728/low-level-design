@@ -63,13 +63,13 @@ export const SearchUI = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto my-10">
-      <h1 className="text-2xl font-bold pb-4 text-gray-800 text-center">Search for Wikipedia Articles</h1>
+    <div className="max-w-full lg:max-w-lg mx-auto my-6 px-4">
+      <h1 className="text-xl font-bold pb-4 text-gray-800 text-center">Search Wikipedia Articles</h1>
       <div className="relative">
         <input
           type="text"
           placeholder="Search..."
-          className="p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
+          className="p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
           value={searchText}
           onChange={handleChange}
           onFocus={() => setIsResultsVisible(true)}
@@ -77,11 +77,11 @@ export const SearchUI = () => {
         />
 
         {isResultsVisible && searchResults.length > 0 && (
-          <ul className="absolute top-full mt-2 w-full bg-white shadow-lg border border-gray-200 z-10 max-h-64 overflow-y-auto rounded-lg">
+          <ul className="absolute top-full mt-1 w-full bg-white shadow-lg border border-gray-200 z-10 max-h-64 overflow-y-auto rounded-md">
             {searchResults.map((result, index) => (
               <li
                 key={index}
-                className="p-2 hover:bg-gray-100 cursor-pointer"
+                className="p-2 hover:bg-gray-100 cursor-pointer text-sm"
                 onMouseDown={() => handleResultClick(result)} // onMouseDown to prevent blur issue
               >
                 {result}
@@ -91,8 +91,8 @@ export const SearchUI = () => {
         )}
 
         {isResultsVisible && searchResults.length === 0 && searchText && (
-          <ul className="absolute top-full mt-2 w-full bg-white shadow-lg border border-gray-200 z-10 rounded-lg">
-            <li className="p-2 text-gray-500">No results found</li>
+          <ul className="absolute top-full mt-1 w-full bg-white shadow-lg border border-gray-200 z-10 rounded-md">
+            <li className="p-2 text-gray-500 text-sm">No results found</li>
           </ul>
         )}
       </div>
