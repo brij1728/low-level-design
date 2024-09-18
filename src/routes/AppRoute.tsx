@@ -1,10 +1,11 @@
-import { About, Accordion, Comments, Header, ImageSlider, Language, LiveChat, Login, Pagination, ProtectedRoute, SearchUI } from '../components'
+import { About, Accordion, Comments, Header, ImageSlider, Language, LiveChat, Login, Pagination, SearchUI } from '../components'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import React, { useState } from 'react'
 
 import { Home } from '../pages'
 import { LANG } from '../utils'
 import { LANGKeyType } from '../types/langType'
+import { ProtectedRoute } from './ProtectedRoute'
 
 export const AppRoute = () => {
 	 const [lang, setLang] = useState<LANGKeyType>('en'); 

@@ -1,4 +1,3 @@
-export * from './ProtectedRoute';
 export * from './About';
 export * from './Language';
 export * from './Login';
